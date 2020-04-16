@@ -1,12 +1,12 @@
 import React from "react";
 import styles from "./Statistics.module.css";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 const Statistics = ({ title, stats }) => (
   <section>
     {title && <h2 className={styles.title}>{title}</h2>}
     <ul className={styles.list}>
-      {stats.map(item => (
+      {stats.map((item) => (
         <li
           key={item.id}
           className={styles.listItem}
@@ -27,6 +27,16 @@ function random_bg_color() {
   const bgColor = "rgb(" + x + "," + y + "," + z + ")";
   return bgColor;
 }
+
+Statistics.propTypes = {
+  stats: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      percentage: PropTypes.number.isRequired,
+    })
+  ),
+};
 
 random_bg_color();
 
